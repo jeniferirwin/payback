@@ -6,7 +6,7 @@ public class Settings : MonoBehaviour
     public int FrogsSplatted { get; private set; }
     public int Difficulty { get; private set; }
 
-    void Start()
+    void Awake()
     {
         CarsDestroyed = 0;
         FrogsSplatted = 0;
