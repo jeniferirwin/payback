@@ -32,6 +32,6 @@ public class Settings : MonoBehaviour
     
     public void Update()
     {
-        Difficulty = CarsDestroyed / 20 - FrogsSplatted / 10;
+        Difficulty = FrogsSaved / 3;
     }
 }

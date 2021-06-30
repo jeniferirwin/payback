@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class CarBehavior : MonoBehaviour
 {
+    [SerializeField] private int hp;
+    [SerializeField] private HPController hpController;
     private float moveSpeed;
-    private float hp;
     private Rigidbody rb;
+    private Settings settings;
     private float ttl;
 
-    private void Awake()
+    private void Start()
     {
+        settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
         moveSpeed = Random.Range(0.3f, 0.5f);
-        hp = Random.Range(1f, 4f);
         rb = GetComponent<Rigidbody>();
         ttl = 30f;
+        hpController.SetHP(hp);
     }
     
     private void Update()
@@ -31,6 +34,7 @@ public class CarBehavior : MonoBehaviour
     {
         // TODO: play explosion sound
         // TODO: play explosion animation
+        settings.OnCarDestroyed();
         GameObject.Destroy(gameObject);
         GameObject.Destroy(this);
     }
@@ -48,7 +52,7 @@ public class CarBehavior : MonoBehaviour
     private void TakeDamage()
     {
         hp -= 1;
-        Debug.Log($"Took damage!");
+        hpController.SetHP(hp);
         // TODO: play hit sound
     }
 }

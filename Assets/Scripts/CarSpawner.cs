@@ -26,7 +26,6 @@ public class CarSpawner : MonoBehaviour
     {
         var type = Random.Range(0, carPrefabs.Length);
         var newCar = GameObject.Instantiate(carPrefabs[type],transform.position,transform.rotation);
-        newCar.AddComponent<CarBehavior>();
         newCar.SetActive(true);
     }
 }

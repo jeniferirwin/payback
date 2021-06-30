@@ -54,7 +54,7 @@ public class FrogBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position.x < -15)
+        if (transform.position.z > 13f)
         {
             settings.OnFrogSaved();
             GameObject.Destroy(gameObject);
