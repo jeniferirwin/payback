@@ -14,7 +14,7 @@ public class FrogSpawner : MonoBehaviour
     
     private float GetCooldown()
     {
-        return Random.Range(5f,15f);
+        return Random.Range(10f,15f);
     }
 
     private void Update()
@@ -30,8 +30,9 @@ public class FrogSpawner : MonoBehaviour
     
     void ReleaseFrog()
     {
-        var newFrog = GameObject.Instantiate(frogPrefab);
+        var newFrog = GameObject.Instantiate(frogPrefab,transform.position,transform.rotation);
 //        newFrog.transform.Rotate(new Vector3(0,0,0));
+        newFrog.transform.Rotate(0,-90,0);
         var frogController = newFrog.GetComponent<FrogController>();
         switch (Random.Range(1,6))
         {
