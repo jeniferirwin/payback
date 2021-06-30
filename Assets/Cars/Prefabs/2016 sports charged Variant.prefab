@@ -272,6 +272,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9175223, y: 1.4761455, z: 4.7962904}
   m_Center: {x: 0, y: -0.021066189, z: -0.007754326}
+--- !u!1 &3717382757682795357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3141419706504916085}
+  - component: {fileID: 5003294842919499629}
+  m_Layer: 7
+  m_Name: FrogKiller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3141419706504916085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717382757682795357}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1739346263890268000}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5003294842919499629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717382757682795357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9032464, y: 2.4154818, z: 3.6022954}
+  m_Center: {x: 0.00433138, y: 0.011645675, z: -0.11881328}
 --- !u!1001 &2281600200900896907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,6 +375,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 973a725f37fec56419fee81baed339d6, type: 2}
+    - target: {fileID: 62926064326360354, guid: 5a34acf2d741e3e4f8b011e23b144af4, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5a34acf2d741e3e4f8b011e23b144af4, type: 3}
       propertyPath: m_Name
       value: 2016 sports charged Variant
@@ -338,6 +386,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5a34acf2d741e3e4f8b011e23b144af4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5a34acf2d741e3e4f8b011e23b144af4, type: 3}
+      propertyPath: m_TagString
+      value: Vehicle
       objectReference: {fileID: 0}
     - target: {fileID: 5288888782453130423, guid: 5a34acf2d741e3e4f8b011e23b144af4, type: 3}
       propertyPath: m_Materials.Array.data[0]

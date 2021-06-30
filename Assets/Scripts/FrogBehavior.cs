@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class FrogBehavior : MonoBehaviour
 {
+    public GameObject frogGuts;
     private float moveSpeed;
     private bool isJumper;
     private float jumpCooldown;
     private Animator anim;
     private Rigidbody rb;
+    private Settings settings;
     private int frogIntensity;
     
     private void Start()
     {
+        settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
         frogIntensity = Random.Range(1,4);
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -51,6 +54,12 @@ public class FrogBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (transform.position.x < -15)
+        {
+            settings.OnFrogSaved();
+            GameObject.Destroy(gameObject);
+            GameObject.Destroy(this);
+        }
         jumpCooldown -= Time.fixedDeltaTime;
         if (isJumper && jumpCooldown <= 0)
         {
@@ -65,6 +74,11 @@ public class FrogBehavior : MonoBehaviour
         }
     }
     
+    private void OnTriggerEnter(Collider other)
+    {
+        GetSquished();     
+    }
+    
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Ground") && isJumper)
@@ -72,6 +86,18 @@ public class FrogBehavior : MonoBehaviour
             anim.SetTrigger("Idle");
         }
     }
+    
+    private void GetSquished()
+    {
+        var guts = GameObject.Instantiate(frogGuts,transform.position,Quaternion.identity);
+        var randomY = Random.Range(0,180);
+        var gutsRotation = new Vector3(0,randomY,0);
+        guts.transform.Rotate(gutsRotation);
+        settings.OnFrogSplatted();
+        GameObject.Destroy(gameObject);
+        GameObject.Destroy(this);
+    }
+
     private void Jump()
     {
         anim.ResetTrigger("Idle");

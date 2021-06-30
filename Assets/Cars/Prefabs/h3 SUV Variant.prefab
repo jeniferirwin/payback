@@ -272,6 +272,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.261592, y: 2.2480822, z: 5.5860777}
   m_Center: {x: 0.00008928776, y: 0.13355136, z: -0.03443241}
+--- !u!1 &8675269891959392010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9016937205522223423}
+  - component: {fileID: 548734210208719093}
+  m_Layer: 7
+  m_Name: FrogKiller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9016937205522223423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675269891959392010}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3020182596238565999}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &548734210208719093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675269891959392010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4107692, y: 2.4154818, z: 5.0596113}
+  m_Center: {x: -0.017419696, y: 0.011645675, z: -0.12968874}
 --- !u!1001 &1077647646558910468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -399,6 +443,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46c43591215b50640ab651a21bcc078d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46c43591215b50640ab651a21bcc078d, type: 3}
+      propertyPath: m_TagString
+      value: Vehicle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631410294951080380, guid: 46c43591215b50640ab651a21bcc078d, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8899232126955642362, guid: 46c43591215b50640ab651a21bcc078d, type: 3}
       propertyPath: m_Materials.Array.data[0]

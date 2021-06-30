@@ -7,6 +7,7 @@ TagManager:
   - Guts
   - Settings
   - Ground
+  - Vehicle
   layers:
   - Default
   - TransparentFX
@@ -14,11 +15,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - frogHurtbox
+  - vehicleHurtbox
+  - frogGroundbox
+  - vehicleGroundbox
+  - ground
   - 
   - 
   - 
