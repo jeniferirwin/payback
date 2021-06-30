@@ -76,6 +76,7 @@ public class FrogBehavior : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"Name of other collider is {other.name}");
         GetSquished();     
     }
     
