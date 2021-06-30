@@ -5,10 +5,15 @@ using UnityEngine;
 public class FrogSpawner : MonoBehaviour
 {
     public GameObject frogPrefab;
+    public bool oneShot;
     private float cooldown;
 
     private void Awake()
     {
+        if (oneShot)
+        {
+            ReleaseFrog();
+        }
         cooldown = GetCooldown();
     }
     
@@ -30,6 +35,8 @@ public class FrogSpawner : MonoBehaviour
     
     void ReleaseFrog()
     {
+        var chance = Random.Range(1f, 100f);
+        if (chance >= 65) return;
         var newFrog = GameObject.Instantiate(frogPrefab,transform.position,transform.rotation);
         newFrog.transform.Rotate(0,-90,0);
         var frogController = newFrog.GetComponent<FrogController>();
@@ -54,5 +61,6 @@ public class FrogSpawner : MonoBehaviour
               frogController.YellowOnBlack();
               break;
         }
+        if (oneShot) gameObject.SetActive(false);
     }
 }
