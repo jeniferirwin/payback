@@ -10,6 +10,7 @@ public class CarBehavior : MonoBehaviour
     private Rigidbody rb;
     private Settings settings;
     private float ttl;
+    private bool killed;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class CarBehavior : MonoBehaviour
     
     private void Update()
     {
+        if (transform.position.y > 50) GameObject.Destroy(gameObject);
+        if (killed) return;
         if (hp <= 0) Explode();
         ttl -= Time.deltaTime;
         if (ttl <= 0)
@@ -30,22 +33,39 @@ public class CarBehavior : MonoBehaviour
         }
     }
     
+    private void TurnOffColliders()
+    {
+        foreach (var coll in GetComponentsInChildren<Collider>())
+        {
+            coll.enabled = false;
+        }
+    }
     private void Explode()
     {
         // TODO: play explosion sound
         // TODO: play explosion animation
+        killed = true;
         settings.OnCarDestroyed();
-        GameObject.Destroy(gameObject);
-        GameObject.Destroy(this);
+        TurnOffColliders();
+        var randomZ = Random.Range(-1f, 1f);
+        var randomY = Random.Range(-1f, 1f);
+        var randomX = Random.Range(-1f, 1f);
+        var randomDir = new Vector3(randomX * 5, 1, randomZ * 5);
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddForce(randomDir * 10, ForceMode.Impulse);
+        var newTorque = new Vector3(randomX, 0, 0);
+        rb.AddTorque(newTorque * 5000);
     }
     private void FixedUpdate()
     {
+        if (killed) return;
         if (Mathf.Abs(transform.position.z) > 200) GameObject.Destroy(gameObject);
         rb.AddForce(transform.forward * -1 * moveSpeed, ForceMode.Impulse);
     }
 
     void OnMouseDown()
     {
+        if (killed) return;
         TakeDamage();
     }
 

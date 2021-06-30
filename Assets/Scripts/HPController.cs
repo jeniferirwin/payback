@@ -10,6 +10,11 @@ public class HPController : MonoBehaviour
     {
         switch (hp)
         {
+            case 0:
+                hp_one.SetActive(false);
+                hp_two.SetActive(false);
+                hp_three.SetActive(false);
+                break;
             case 1:
                 hp_one.SetActive(true);
                 hp_two.SetActive(false);
