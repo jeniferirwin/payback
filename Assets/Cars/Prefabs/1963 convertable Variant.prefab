@@ -243,6 +243,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2491614881259514127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385195882840418546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7865812, y: 4.9335966, z: 1.420962}
+  m_Center: {x: 0, y: 0.0028840303, z: 0.016565442}
 --- !u!54 &5463681108242133424
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -257,21 +270,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &2491614881259514127
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385195882840418546}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7865812, y: 4.9335966, z: 1.420962}
-  m_Center: {x: 0, y: 0.0028840303, z: 0.016565442}
 --- !u!1001 &5254132185791686414
 PrefabInstance:
   m_ObjectHideFlags: 0
