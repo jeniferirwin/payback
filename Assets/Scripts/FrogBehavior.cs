@@ -19,12 +19,10 @@ public class FrogBehavior : MonoBehaviour
         jumpCooldown = GetCooldown();
         if (Random.Range(1,101) <= 50)
         {
-            Debug.Log("Creating a jumper");
             isJumper = true;
         }
         else
         {
-            Debug.Log("Creating a non-jumper");
             isJumper = false;
         }
     }
@@ -67,21 +65,10 @@ public class FrogBehavior : MonoBehaviour
         }
     }
     
-    /*
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log("Jumped");
-        }
-    }
-    */
-    
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Ground") && isJumper)
         {
-            //anim.ResetTrigger("Jump");
             anim.SetTrigger("Idle");
         }
     }
