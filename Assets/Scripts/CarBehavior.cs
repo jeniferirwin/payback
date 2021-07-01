@@ -27,11 +27,11 @@ public class CarBehavior : MonoBehaviour
         switch (settings.Difficulty)
         {
             case 1: return 0.5f;
-            case 2: return 0.75f;
-            case 3: return 1f;
-            case 4: return 1.25f;
-            case 5: return 1.50f;
-            default: return 1.75f;
+            case 2: return 0.65f;
+            case 3: return 0.75f;
+            case 4: return 0.85f;
+            case 5: return 0.95f;
+            default: return 1.05f;
         }
     }
     
@@ -39,12 +39,12 @@ public class CarBehavior : MonoBehaviour
     {
         switch (settings.Difficulty)
         {
-            case 1: return 1f;
-            case 2: return 1.5f;
-            case 3: return 2f;
-            case 4: return 2.5f;
-            case 5: return 3f;
-            default: return 3.5f;
+            case 1: return 0.8f;
+            case 2: return 1f;
+            case 3: return 1.2f;
+            case 4: return 1.4f;
+            case 5: return 1.6f;
+            default: return 1.8f;
         }
     }
     private void Update()

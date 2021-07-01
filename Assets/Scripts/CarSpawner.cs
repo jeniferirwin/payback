@@ -15,7 +15,20 @@ public class CarSpawner : MonoBehaviour
         if (cooldown <= 0f)
         {
             cooldown = Random.Range(GetMinCooldown(), GetMaxCooldown());
-            SpawnCar();
+            if (Random.Range(1,101) <= GetSpawnChance()) SpawnCar();
+        }
+    }
+    
+    private int GetSpawnChance()
+    {
+        switch (settings.Difficulty)
+        {
+            case 1: return 50;
+            case 2: return 60;
+            case 3: return 70;
+            case 4: return 80;
+            case 5: return 90;
+            default: return 100;
         }
     }
     
