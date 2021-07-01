@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarBehavior : MonoBehaviour
@@ -90,15 +88,10 @@ public class CarBehavior : MonoBehaviour
         rb.AddForce(transform.forward * -1 * moveSpeed, ForceMode.Impulse);
     }
 
-    void OnMouseDown()
+    public void TakeDamage(int value)
     {
         if (killed) return;
-        TakeDamage();
-    }
-
-    private void TakeDamage()
-    {
-        hp -= 1;
+        hp -= value;
         hpController.SetHP(hp);
         // TODO: play hit sound
     }

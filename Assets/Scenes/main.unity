@@ -4173,7 +4173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1964141846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4189,7 +4189,16 @@ MonoBehaviour:
   targetsMask:
     serializedVersion: 2
     m_Bits: 1152
+  vehicleMask:
+    serializedVersion: 2
+    m_Bits: 128
   hitDisplay: {fileID: 4214491146440125106, guid: c0f6ad7d2f802d045b6351b459164b5f, type: 3}
+  settings: {fileID: 320737291}
+  rifleShotSize: 0.1
+  shotgunBlastSize: 1.5
+  machineGunBlastSize: 0.1
+  grenadeBlastSize: 5
+  rocketBlastSize: 10
 --- !u!4 &1964141847
 Transform:
   m_ObjectHideFlags: 0

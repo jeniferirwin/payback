@@ -5,7 +5,7 @@ public class HitDisplay : MonoBehaviour
     private float ttl;
     void Start()
     {
-        ttl = 0.5f;
+        ttl = 0.05f;
     }
 
     void Update()
