@@ -76,13 +76,11 @@ public class CarBehavior : MonoBehaviour
     private void Explode()
     {
         if (killed) return;
-        // TODO: play explosion sound
+        audioDB.PlayExplosion();
         GameObject.Instantiate(explosions.GetRandomExplosion(),transform.position, Quaternion.identity);
-        audioSource.Stop();
         RaycastHit[] hitInfo = Physics.SphereCastAll(transform.position, 10f, Vector3.up, 1f, vehicleMask);
         foreach (var hit in hitInfo)
         {
-            Debug.Log("Exploding on a car!");
             CarBehavior otherBehavior;
             if (hit.collider.gameObject.transform.parent.TryGetComponent<CarBehavior>(out otherBehavior))
             {
@@ -115,6 +113,5 @@ public class CarBehavior : MonoBehaviour
         hp -= value;
         if (hp < 0) hp = 0;
         hpController.SetHP(hp);
-        // TODO: play hit sound
     }
 }

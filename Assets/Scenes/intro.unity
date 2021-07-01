@@ -425,8 +425,8 @@ MonoBehaviour:
   rocket: {fileID: 8300000, guid: 2332f4a86fbaa56458f6f43897bad11d, type: 3}
   drive: {fileID: 8300000, guid: 006b8f0aea79b8f499f2719c868a0cb2, type: 3}
   upgrade: {fileID: 8300000, guid: d4f457bf46d5f914d94fb2287fb8f49e, type: 3}
-  explode: {fileID: 0}
-  squish: {fileID: 0}
+  explode: {fileID: 8300000, guid: 967bc05906764f44786c0a730d79c9cb, type: 3}
+  squish: {fileID: 8300000, guid: ca99b641af6bc4249a59e2fa167befbf, type: 3}
   helicopter: {fileID: 0}
   audioObject: {fileID: 1053692783}
 --- !u!1 &418444583

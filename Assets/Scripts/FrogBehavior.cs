@@ -10,10 +10,14 @@ public class FrogBehavior : MonoBehaviour
     private Rigidbody rb;
     private Settings settings;
     private int frogIntensity;
+    private AudioSource audioSource;
+    private UserVolume userVolume;
+    private AudioDB audioDB;
     
     private void Start()
     {
         settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
+        audioDB = GameObject.FindGameObjectWithTag("AudioSetting").GetComponent<AudioDB>();
         frogIntensity = Random.Range(1,4);
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -89,6 +93,7 @@ public class FrogBehavior : MonoBehaviour
     
     private void GetSquished()
     {
+        audioDB.PlaySquish();
         var guts = GameObject.Instantiate(frogGuts,transform.position,Quaternion.identity);
         var randomY = Random.Range(0,180);
         var gutsRotation = new Vector3(0,randomY,0);
