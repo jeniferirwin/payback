@@ -15,12 +15,38 @@ public class CarBehavior : MonoBehaviour
     private void Start()
     {
         settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
-        moveSpeed = Random.Range(0.3f, 0.5f);
+        moveSpeed = Random.Range(GetMinSpeed() / 2, GetMaxSpeed() / 2);
+        Debug.Log($"Creating car with speed {moveSpeed}.");
         rb = GetComponent<Rigidbody>();
         ttl = 30f;
         hpController.SetHP(hp);
     }
     
+    private float GetMinSpeed()
+    {
+        switch (settings.Difficulty)
+        {
+            case 1: return 0.5f;
+            case 2: return 0.75f;
+            case 3: return 1f;
+            case 4: return 1.25f;
+            case 5: return 1.50f;
+            default: return 1.75f;
+        }
+    }
+    
+    private float GetMaxSpeed()
+    {
+        switch (settings.Difficulty)
+        {
+            case 1: return 1f;
+            case 2: return 1.5f;
+            case 3: return 2f;
+            case 4: return 2.5f;
+            case 5: return 3f;
+            default: return 3.5f;
+        }
+    }
     private void Update()
     {
         if (transform.position.y > 50) GameObject.Destroy(gameObject);
@@ -59,7 +85,8 @@ public class CarBehavior : MonoBehaviour
     private void FixedUpdate()
     {
         if (killed) return;
-        if (Mathf.Abs(transform.position.z) > 200) GameObject.Destroy(gameObject);
+        if (Mathf.Abs(transform.position.z) > 50) GameObject.Destroy(gameObject);
+        if (Mathf.Abs(rb.velocity.z) > moveSpeed) return;
         rb.AddForce(transform.forward * -1 * moveSpeed, ForceMode.Impulse);
     }
 

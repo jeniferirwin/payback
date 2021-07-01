@@ -32,6 +32,6 @@ public class Settings : MonoBehaviour
     
     public void Update()
     {
-        Difficulty = FrogsSaved / 3;
+        Difficulty = Mathf.Max(1, FrogsSaved / 10);
     }
 }

@@ -14,11 +14,34 @@ public class CarSpawner : MonoBehaviour
 
         if (cooldown <= 0f)
         {
-            var percentage = 1f - (settings.Difficulty + 10) / 10 * -1;
-            var minCooldown = 2 * percentage;
-            var maxCooldown = 5 * percentage;
-            cooldown = Random.Range(2 * percentage, 5 * percentage);
+            cooldown = Random.Range(GetMinCooldown(), GetMaxCooldown());
             SpawnCar();
+        }
+    }
+    
+    private float GetMinCooldown()
+    {
+        switch (settings.Difficulty)
+        {
+            case 1: return 3f;
+            case 2: return 2.5f;
+            case 3: return 2f;
+            case 4: return 1.5f;
+            case 5: return 1f;
+            default: return 0.5f;
+        }
+    }
+    
+    private float GetMaxCooldown()
+    {
+        switch (settings.Difficulty)
+        {
+            case 1: return 6f;
+            case 2: return 5f;
+            case 3: return 4f;
+            case 4: return 3f;
+            case 5: return 2f;
+            default: return 1f;
         }
     }
     
