@@ -4,13 +4,14 @@ public class MouseSpotlight : MonoBehaviour
 {
     public GameObject spotlight;
     public LayerMask groundMask;
-    private Vector2 mousePos;
 
     void FixedUpdate()
     {
-        mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-        Debug.Log($"{mousePos}");
-        Debug.Log($"{Input.mousePosition}");
-        transform.LookAt(new Vector3(mousePos.x, 0, mousePos.y));
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, 30, groundMask))
+        {
+            transform.LookAt(hit.point);
+        }
     }
 }
