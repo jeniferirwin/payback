@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class CarBehavior : MonoBehaviour
 {
+    private ExplosionDB explosions;
     [SerializeField] private int hp;
     [SerializeField] private HPController hpController;
     [SerializeField] private LayerMask vehicleMask;
+    private AudioSource audioSource;
+    private UserVolume userVolume;
+    private AudioDB audioDB;
     private float moveSpeed;
     private Rigidbody rb;
     private Settings settings;
@@ -14,10 +18,14 @@ public class CarBehavior : MonoBehaviour
     private void Start()
     {
         settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
+        explosions = GameObject.Find("Environment").GetComponent<ExplosionDB>();
+        audioSource = GetComponent<AudioSource>();
+        userVolume = GameObject.FindGameObjectWithTag("AudioSetting").GetComponent<UserVolume>();
+        audioDB = GameObject.FindGameObjectWithTag("AudioSetting").GetComponent<AudioDB>();
+        audioSource.volume = userVolume.volume;
         moveSpeed = Random.Range(GetMinSpeed() / 2.5f, GetMaxSpeed() / 2.5f);
-        Debug.Log($"Creating car with speed {moveSpeed}.");
         rb = GetComponent<Rigidbody>();
-        ttl = 30f;
+        ttl = 50f;
         hpController.SetHP(hp);
     }
     
@@ -69,7 +77,8 @@ public class CarBehavior : MonoBehaviour
     {
         if (killed) return;
         // TODO: play explosion sound
-        // TODO: play explosion animation
+        GameObject.Instantiate(explosions.GetRandomExplosion(),transform.position, Quaternion.identity);
+        audioSource.Stop();
         RaycastHit[] hitInfo = Physics.SphereCastAll(transform.position, 10f, Vector3.up, 1f, vehicleMask);
         foreach (var hit in hitInfo)
         {

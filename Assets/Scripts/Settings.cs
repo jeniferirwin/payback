@@ -38,7 +38,7 @@ public class Settings : MonoBehaviour
     public void OnFrogSplatted()
     {
         FrogsSplatted++;
-        if (FrogsSplatted >= 50)
+        if (FrogsSplatted >= 25)
         {
             SceneManager.LoadScene("dead");
         }
@@ -47,7 +47,7 @@ public class Settings : MonoBehaviour
     public void OnFrogSaved()
     {
         FrogsSaved++;
-        if (FrogsSaved >= 100) SceneManager.LoadScene("win");
+        if (FrogsSaved >= 50) SceneManager.LoadScene("win");
         Difficulty = Mathf.Max(1, (Mathf.Min(5, FrogsSaved / 10)));
         var light = sun.GetComponent<Light>();
         light.intensity = GetLightIntensity();

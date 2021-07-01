@@ -6,6 +6,7 @@ public class HitDetection : MonoBehaviour
     public LayerMask vehicleMask;
     public GameObject hitDisplay;
     public Settings settings;
+    private AudioDB audioDB;
     
     public float rifleShotSize;
     public float shotgunBlastSize;
@@ -18,6 +19,7 @@ public class HitDetection : MonoBehaviour
     private void Start()
     {
         settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
+        audioDB = GameObject.FindGameObjectWithTag("AudioSetting").GetComponent<AudioDB>();
         cooldown = 0f;
     }
 
@@ -27,30 +29,32 @@ public class HitDetection : MonoBehaviour
         if (cooldown > 0) return;
         if (Input.GetMouseButton(0))
         {
-            Debug.Log("Got mouse click...");
             cooldown = GetWeaponCooldown();
-            Debug.Log($"Weapon cooldown is {cooldown}");
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 30, targetsMask))
             {
-                Debug.Log("Registered a hit...");
                 switch (settings.CarsDestroyed)
                 {
                     case int n when n < 30:
                         RifleShot(hit.point);
+                        audioDB.PlayRifle();
                         break;
                     case int n when n >= 30 && n < 60:
                         ShotgunBlast(hit.point);
+                        audioDB.PlayShotgun();
                         break;
                     case int n when n >= 60 && n < 90:
                         MachineGunShot(hit.point);
+                        audioDB.PlayMachineGun();
                         break;
                     case int n when n >= 90 && n < 120:
                         GrenadeBlast(hit.point);
+                        audioDB.PlayGrenade();
                         break;
                     default:
                         RocketBlast(hit.point);
+                        audioDB.PlayRocket();
                         break;
                 }
                 // GameObject.Instantiate(hitDisplay, hit.point, Quaternion.identity);
@@ -61,7 +65,6 @@ public class HitDetection : MonoBehaviour
     private void RifleShot(Vector3 location)
     {
         RaycastHit hitInfo;
-        Debug.Log("In rifle shot...");
         if (Physics.Raycast(location + new Vector3(0, 5, 0), Vector3.down, out hitInfo, 10f, vehicleMask))
         {
             var carBehavior = hitInfo.collider.gameObject.transform.parent.GetComponent<CarBehavior>();

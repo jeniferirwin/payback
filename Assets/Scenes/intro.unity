@@ -260,17 +260,16 @@ MonoBehaviour:
 
 
     You lose the game if
-    50 frogs get squashed. You win if 100 frogs get saved!
+    25 frogs get squashed. You win if 50 frogs get saved!
 
 
-    Weapon upgrades
-    happen as more vehicles are destroyed. You unlock the final weapon at 120 vehicles
-    destroyed!
+    Weapon upgrades happen
+    as more vehicles are destroyed. You unlock the final weapon at 120 vehicles destroyed!
 
 
-    Different vehicles have different hit point values. Hit points
-    are indicated by red orbs above the vehicle. Better weapons can mow right through
-    them!'
+    Different
+    vehicles have different hit point values. Hit points are indicated by red orbs
+    above the vehicle. Better weapons can mow right through them!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b6fa5ae0944ab8941b1aeba78ce3aac0, type: 2}
   m_sharedMaterial: {fileID: 5100138031938363615, guid: b6fa5ae0944ab8941b1aeba78ce3aac0, type: 2}
@@ -358,6 +357,7 @@ GameObject:
   - component: {fileID: 146674229}
   - component: {fileID: 146674230}
   - component: {fileID: 146674231}
+  - component: {fileID: 146674232}
   m_Layer: 0
   m_Name: AudioSetting
   m_TagString: AudioSetting
@@ -406,6 +406,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e003cd7b69019004eac1398351ebb832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &146674232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146674228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e04349291c525b45ac6a80fb3fa080a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rifle: {fileID: 8300000, guid: d34ee3e3c308c9344b444f5a345049ec, type: 3}
+  shotgun: {fileID: 8300000, guid: 2c895ab76e7a1f24db1966717131ab49, type: 3}
+  machine: {fileID: 8300000, guid: 5d378d0718e8cc346a1f170a2a3116f4, type: 3}
+  grenade: {fileID: 8300000, guid: 5b4d6bd2c3b079543a75c659001b3bc3, type: 3}
+  rocket: {fileID: 8300000, guid: 2332f4a86fbaa56458f6f43897bad11d, type: 3}
+  drive: {fileID: 8300000, guid: 006b8f0aea79b8f499f2719c868a0cb2, type: 3}
+  upgrade: {fileID: 8300000, guid: d4f457bf46d5f914d94fb2287fb8f49e, type: 3}
+  explode: {fileID: 0}
+  squish: {fileID: 0}
+  helicopter: {fileID: 0}
+  audioObject: {fileID: 1053692783}
 --- !u!1 &418444583
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &418444584
 RectTransform:
   m_ObjectHideFlags: 0
