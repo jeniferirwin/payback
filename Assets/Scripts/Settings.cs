@@ -8,6 +8,8 @@ public class Settings : MonoBehaviour
     public GameObject UpgradeFour;
     public GameObject UpgradeFive;
 
+    public GameObject sun;
+
     public int CarsDestroyed { get; private set; }
     public int FrogsSplatted { get; private set; }
     public int FrogsSaved { get; private set; }
@@ -40,10 +42,20 @@ public class Settings : MonoBehaviour
     public void OnFrogSaved()
     {
         FrogsSaved++;
+        Difficulty = Mathf.Max(1, FrogsSaved / 2);
+        var light = sun.GetComponent<Light>();
+        light.intensity = GetLightIntensity();
     }
-    
-    public void Update()
+
+    private float GetLightIntensity()
     {
-        Difficulty = Mathf.Max(1, FrogsSaved / 10);
+        switch (Difficulty)
+        {
+            case 1: return 0.5f;
+            case 2: return 0.4f;
+            case 3: return 0.25f;
+            case 4: return 0.1f;
+            default: return 0.0f;
+        }
     }
 }
