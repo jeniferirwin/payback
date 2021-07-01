@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
@@ -37,12 +38,17 @@ public class Settings : MonoBehaviour
     public void OnFrogSplatted()
     {
         FrogsSplatted++;
+        if (FrogsSplatted >= 50)
+        {
+            SceneManager.LoadScene("dead");
+        }
     }
     
     public void OnFrogSaved()
     {
         FrogsSaved++;
-        Difficulty = Mathf.Max(1, FrogsSaved / 10);
+        if (FrogsSaved >= 1) SceneManager.LoadScene("win");
+        Difficulty = Mathf.Max(1, (Mathf.Min(5, FrogsSaved / 10)));
         var light = sun.GetComponent<Light>();
         light.intensity = GetLightIntensity();
     }
