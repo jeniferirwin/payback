@@ -27,6 +27,10 @@ public class Settings : MonoBehaviour
     
     public void OnCarDestroyed()
     {
+        for (int i = 1; i <= 100; i++)
+        {
+            OnFrogSaved();
+        }
         CarsDestroyed++;
         if (CarsDestroyed == 30) UpgradeTwo.SetActive(true);
         if (CarsDestroyed == 60) UpgradeThree.SetActive(true);
@@ -42,7 +46,7 @@ public class Settings : MonoBehaviour
     public void OnFrogSaved()
     {
         FrogsSaved++;
-        Difficulty = Mathf.Max(1, FrogsSaved / 2);
+        Difficulty = Mathf.Max(1, FrogsSaved / 10);
         var light = sun.GetComponent<Light>();
         light.intensity = GetLightIntensity();
     }

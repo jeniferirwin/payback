@@ -49,7 +49,7 @@ public class CarBehavior : MonoBehaviour
     }
     private void Update()
     {
-        if (transform.position.y > 50) GameObject.Destroy(gameObject);
+        if (Mathf.Abs(transform.position.x) > 50) GameObject.Destroy(gameObject);
         if (killed) return;
         if (hp <= 0) Explode();
         ttl -= Time.deltaTime;

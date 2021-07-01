@@ -7,6 +7,6 @@ public class HeadlightBehavior : MonoBehaviour
     void Start()
     {
         var settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
-        if (settings.Difficulty < 0) gameObject.SetActive(false);
+        if (settings.Difficulty < 3) gameObject.SetActive(false);
     }
 }
