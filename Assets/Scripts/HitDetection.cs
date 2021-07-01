@@ -29,6 +29,7 @@ public class HitDetection : MonoBehaviour
         {
             Debug.Log("Got mouse click...");
             cooldown = GetWeaponCooldown();
+            Debug.Log($"Weapon cooldown is {cooldown}");
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 30, targetsMask))
@@ -129,13 +130,13 @@ public class HitDetection : MonoBehaviour
 
     private float GetWeaponCooldown()
     {
-        switch (settings.Difficulty)
+        switch (settings.CarsDestroyed)
         {
-            case 1: return 1 / 2;
-            case 2: return 1 / 2;
-            case 3: return 1 / 50;
-            case 4: return 1 / 3;
-            case 5: return 1 / 2;
+            case int n when n < 30: return 1f / 2f;
+            case int n when n >= 30 && n < 60: return 1f / 2f;
+            case int n when n >= 60 && n < 90: return 1f / 50f;
+            case int n when n >= 90 && n < 120: return 1f / 3f;
+            case int n when n >= 120: return 1f / 2f;
             default: return 0.3f;
         }
     }

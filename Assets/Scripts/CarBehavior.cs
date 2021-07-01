@@ -4,6 +4,7 @@ public class CarBehavior : MonoBehaviour
 {
     [SerializeField] private int hp;
     [SerializeField] private HPController hpController;
+    [SerializeField] private LayerMask vehicleMask;
     private float moveSpeed;
     private Rigidbody rb;
     private Settings settings;
@@ -66,8 +67,19 @@ public class CarBehavior : MonoBehaviour
     }
     private void Explode()
     {
+        if (killed) return;
         // TODO: play explosion sound
         // TODO: play explosion animation
+        RaycastHit[] hitInfo = Physics.SphereCastAll(transform.position, 10f, Vector3.up, 1f, vehicleMask);
+        foreach (var hit in hitInfo)
+        {
+            Debug.Log("Exploding on a car!");
+            CarBehavior otherBehavior;
+            if (hit.collider.gameObject.transform.parent.TryGetComponent<CarBehavior>(out otherBehavior))
+            {
+                otherBehavior.TakeDamage(3);
+            }
+        }
         killed = true;
         settings.OnCarDestroyed();
         TurnOffColliders();
@@ -92,6 +104,7 @@ public class CarBehavior : MonoBehaviour
     {
         if (killed) return;
         hp -= value;
+        if (hp < 0) hp = 0;
         hpController.SetHP(hp);
         // TODO: play hit sound
     }

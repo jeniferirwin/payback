@@ -28,6 +28,7 @@ public class Settings : MonoBehaviour
     
     public void OnCarDestroyed()
     {
+        CarsDestroyed++;
         if (CarsDestroyed == 30) UpgradeTwo.SetActive(true);
         if (CarsDestroyed == 60) UpgradeThree.SetActive(true);
         if (CarsDestroyed == 90) UpgradeFour.SetActive(true);

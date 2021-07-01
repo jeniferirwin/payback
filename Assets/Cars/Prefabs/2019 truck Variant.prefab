@@ -273,6 +273,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 3
   hpController: {fileID: 466144789555104509}
+  vehicleMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!65 &3786749220683618374
 BoxCollider:
   m_ObjectHideFlags: 0
