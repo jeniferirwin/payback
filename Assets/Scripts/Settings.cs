@@ -27,10 +27,6 @@ public class Settings : MonoBehaviour
     
     public void OnCarDestroyed()
     {
-        for (int i = 1; i <= 100; i++)
-        {
-            OnFrogSaved();
-        }
         CarsDestroyed++;
         if (CarsDestroyed == 30) UpgradeTwo.SetActive(true);
         if (CarsDestroyed == 60) UpgradeThree.SetActive(true);

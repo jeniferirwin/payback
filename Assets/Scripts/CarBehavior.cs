@@ -15,7 +15,7 @@ public class CarBehavior : MonoBehaviour
     private void Start()
     {
         settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
-        moveSpeed = Random.Range(GetMinSpeed() / 2, GetMaxSpeed() / 2);
+        moveSpeed = Random.Range(GetMinSpeed() / 2.5f, GetMaxSpeed() / 2.5f);
         Debug.Log($"Creating car with speed {moveSpeed}.");
         rb = GetComponent<Rigidbody>();
         ttl = 30f;
